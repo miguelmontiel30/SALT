@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Esta página es para publicidad del Colegio GMG">
+    <meta name="author" content="">
+
+    <!-- Icono y titulo del encabezado -->
+    <link rel="icon" href="imagenes/Logo.png">
+    <title>GMG</title>
+
+    <!-- Vinculos hacia los CSS y Bootstrap CSS-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="css/nav-styles.css" rel="stylesheet">
+    <link href="css/resource-styles.css" rel="stylesheet">
+    <link href="css/section-styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <script src="js/plugins.js"></script>
+
+    <!-- Inicio de la cabecera de la página 
+    ==========================================-->
+    <header>
+
+        <!-- Barra de navegación 
+        ==========================================-->
+        <nav class="navbar container-fluid navbar-fixed-top navbar-default" role="navigation">
+
+            <!-- Cabecera de el contenido del navheader -->
+            <div class="navbar-header">
+
+                <!-- Botón para abrir navegación en Dispositivos Móbiles-->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Abrir navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Enlace con el Logotipo de la escuela-->
+                <a class="" href="#">
+                    <img alt="Brand" src="imagenes/Logo.png">
+                    <p class="pull-right navbar-text hidden-xs hidden-sm">Colegio Gabriel Mancera García</p>
+                    <p class="pull-right navbar-text hidden-md hidden-lg">Colegio GMG</p>
+                </a>
+
+            </div>
+
+
+            <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+                     otro elemento que se pueda ocultar al minimizar la barra -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="conocenos.html">Conócenos</a>
+                    </li>
+                    <li>
+                        <a href="#">Inicie Sesión</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <!-- Fin de la barra de Navegación 
+        ==========================================-->
+
+
+        <!-- Carousel
+        ==========================================-->
+        <div class="container-fluid">
+            <div class="container-fluid col-md-12">
+                <div id="carousel-1" class="carousel slide" data-ride="carousel">
+
+                    <!-- Indicadores (Circulos abajo de las imagenes) 
+                ==========================================-->
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-1" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-1" data-slide-to="2" class=""></li>
+                    </ol>
+
+                    <!-- Fin de los indicadores 
+                ==========================================-->
+
+                    <!-- Contenedor de los slides 
+                ==========================================-->
+                    <div class="carousel-inner" role="listbox">
+
+                        <!-- Contenedor del Primer Slider -->
+                        <div class="item active">
+                            <img class="img-responsive" src="imagenes/img_slider_1.png" alt="Primer Slider">
+                        </div>
+
+                        <!-- Contenedor del Segundo Slider -->
+                        <div class="item">
+                            <img class="img-responsive" src="imagenes/img_slider_2.jpg" class="slider" alt="Segundo Slider">
+
+                            <!-- Contenedor del Texto del Slider -->
+                            <div class="carousel-caption">
+                                <h1 class="">Consulta calificaciones</h1>
+                                <p>
+                                    <a href="padres.html" class="btn btn-success">Click Aqui</a>
+                                </p>
+                                <p>
+                                    <strong>Colegio Gabriel Mancera García</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Contenedor del Tercer Slider -->
+                        <div class="item">
+                            <img class="img-responsive" src="imagenes/img_slider_3.jpg" class="slider" alt="">
+                            <!-- Contenedor del Texto del Slider -->
+                            <div class="carousel-caption">
+                                <h1>Nuestra visión y Misión</h1>
+                                <p>
+                                    <a href="nosotros.html" class="btn btn-success">Click Aqui</a>
+                                </p>
+                                <p>
+                                    <strong> Gabriel Mancera García</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Fin del contenedor de los Slides
+                    ==========================================-->
+
+                    <!-- Controles para cambiar de Imagenes 
+                ============ Control Izquierda ===========-->
+                    <a href="#carousel-1" class="left carousel-control" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <!--============ Control Derecha ===========-->
+                    <a href="#carousel-1" class="right carousel-control" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                    <!-- Fin de los Controles
+                ==========================================-->
+                </div>
+            </div>
+        </div>
+        <!-- Fin del Carousel
+        ==========================================-->
+
+    </header>
+    <!-- Fin de la cabecera 
+    ==========================================-->
+
+    
+
+
+    <!-- Vinculos a JavaScript y JQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

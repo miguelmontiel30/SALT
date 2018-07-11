@@ -1,0 +1,101 @@
+/* Estilos para el contenedor del carousel */
+header div.container-fluid{
+ 
+    padding: 0px;
+}
+
+/* Estilo para el control del tamaño de la IMAGEN DEL CAROUSEL */
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+    width: 100%;
+    height: 400px;
+}
+
+/* Estilo para imagen de la seccion CONOCENOS */
+header div.container-fluid img{
+    width: 100%;
+    height: 400px;;
+}
+
+/* Estilo para imagenes de articulos */
+.img-evento{
+    max-height: 20em;
+    margin-bottom: 0px;    
+}
+
+/* Estilo para imagenes de los uniformes */
+#uniforme{
+    width: 150px;
+    height: 360px;;
+}
+
+div.modal-body, #emergente{
+    text-align: center;
+}
+
+/*Estilo para el icono de la ventana emergente */
+#tool{    
+width: 50px;
+height: 50px;
+}
+
+/* Estilo para imagene de CONTACTO */
+.img-contacto{
+    height: 40em;
+    margin-bottom: 0px;    
+}
+
+.img-footer{
+    width: 50px;
+    height: 50px;
+}
+
+.img-redes{
+    width: 30px;
+    height: 30px;
+}
+
+/*Estilos para el mapa de ubicacion */
+.mapa{
+    width: 100%;
+    height: 20em;
+}
+
+/* Estilo para los iconos del mapa*/
+div.contenido-articulo img.pull-left {
+    margin-left: 10px;
+    width: 5em;
+    height: 5em;
+}
+
+div.contenido-articulo h4 {
+    text-align: center;
+}
+
+div.contenido-articulo h5 {
+    font-size: 1.3em;
+}
+
+
+/* Estilo para el icono de IR ARRIBA */
+.icon-prop{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+/* Estilos para hacer imagen Circular*/
+#circle-image{    
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-size: 100% auto;
+    display:block;
+    margin:auto;
+}
+
+/* Estilos para contenedor de imagen circular */
+.img-ensenanza{
+    max-width: 64px;
+    max-height: 64px;
+}
+
