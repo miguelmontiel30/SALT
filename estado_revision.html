@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Font Awesome para iconos-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Bootstrap CSS -->
+
+    <!-- Estilos para DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+
+    <!-- Estilos del sitio web -->
+    <link rel="stylesheet" href="css/form-styles.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="img/Icons/Logo SALT.png">
+
+    <title>Estado de las revisiones</title>
+</head>
+
+<body>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/verificar_sesion.js"></script>
+
+    <header>
+
+        <!--Inicio de la Barra de navegacion -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <a class="navbar-brand d-none d-md-block" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> Sistema de Admininstración Logistíca Terrestre
+            </a>
+
+            <a class="navbar-brand d-sm-none" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> SALT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-lg-row flex-sm-column ml-md-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="principal.html">Inicio
+                            <span class="sr-only">(Inicio)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="#">Reportes
+                            <span class="sr-only">(Reportes)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Menú
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="usuarios.html">
+                                <i class='fa fa-user'></i>Usuarios
+                            </a>
+
+                            <a class="dropdown-item" href="vehiculo.html">
+                                <i class='fa fa-truck'></i>Vehiculos
+                            </a>
+
+                            <a class="dropdown-item" href="viajes.html">
+                                <i class='fa fa-truck'></i>Viajes
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Usuario
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="perfil.html">
+                                <i class='fa fa-user'></i>Perfil
+                            </a>
+                            <a class="dropdown-item" id="salir">
+                                <i class='fa fa-sign-out'></i>Salir
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <!--Fin de la nav-->
+
+    </header>
+
+    <h1 class="text-center text-info mt-5">Estado de la revisión del vehículo</h1>
+
+
+    <!-- Contenedor NIVELES DEL SALIDA Y LLEGADA -->
+    <div class="container row col-md-12">
+
+        <!-- Salida -->
+        <div class="card container col-md-11 border-primary mb-3">
+
+            <div class="card-header bg-transparent border-primary">
+                <h3 class="text-center text-primary">Revisión de niveles (salida).</h3>
+            </div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de REVISION DE NIVELES -->
+                <div class="form-row">
+
+                    <!-- Contenedor de radios para niveles de ACEITE DEL MOTOR -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Aceite del motor</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="a_condicion_salida" value="En condición"
+                                disabled>
+                            <label class="custom-control-label" for="a_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="a_cambio_salida" value="Cambiar durante viaje"
+                                disabled>
+                            <label class="custom-control-label" for="a_viaje">Cambiar durante viaje</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="a_viaje_salida" value="Cambio" disabled>
+                            <label class="custom-control-label" for="a_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de ACEITE DE TRANSMISION -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Aceite de trasmisión</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="t_condicion_salida" value="En condición" disabled>
+                            <label class="custom-control-label" for="t_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="t_viaje_salida" value="Cambiar durante viaje"
+                                disabled>
+                            <label class="custom-control-label" for="a_cambio_salida">Cambiar durante viaje</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="t_cambio_salida" value="Cambio" disabled>
+                            <label class="custom-control-label" for="t_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de ANTICONGELANTE -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Anticongelante</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="c_condicion_salida" value="En condición" disabled>
+                            <label class="custom-control-label" for="c_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="c_viaje_salida" value="Cambiar durante viaje"
+                                disabled>
+                            <label class="custom-control-label" for="c_viaje">Cambiar durante viaje</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="c_cambio_salida" value="Cambio" disabled>
+                            <label class="custom-control-label" for="c_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de LIQUIDO DE FRENOS -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Liquido de frenos</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="f_condicion_salida" value="En condición" disabled>
+                            <label class="custom-control-label" for="f_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="f_viaje_salida" value="Cambiar durante viaje"
+                                disabled>
+                            <label class="custom-control-label" for="f_viaje">Cambiar durante viaje</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="" id="f_cambio_salida" value="Cambio" disabled>
+                            <label class="custom-control-label" for="f_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Llegada -->
+        <div class="card container col-md-11 border-success mb-3">
+
+            <div class="card-header bg-transparent border-success">
+                <h3 class="text-center text-success">Revisión de niveles (llegada).</h3>
+            </div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de REVISION DE NIVELES -->
+                <div class="form-row">
+
+                    <!-- Contenedor de radios para niveles de ACEITE DEL MOTOR -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Aceite del motor</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="aceite_motor" id="a_condicion_llegada" value="En condición" disabled>
+                            <label class="custom-control-label" for="a_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="aceite_motor" id="a_cambio_llegada" value="Cambio" disabled>
+                            <label class="custom-control-label" for="a_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de ACEITE DE TRANSMISION -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Aceite de trasmisión</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="aceite_transmision" id="t_condicion_llegada" value="En condición"
+                                disabled>
+                            <label class="custom-control-label" for="t_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="aceite_transmision" id="t_cambio_llegada" value="Cambio" disabled>
+                            <label class="custom-control-label" for="t_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de ANTICONGELANTE -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Anticongelante</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="anticongelante" id="c_condicion_llegada" value="En condición" disabled>
+                            <label class="custom-control-label" for="c_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="anticongelante" id="c_cambio_llegada" value="Cambio" disabled>
+                            <label class="custom-control-label" for="c_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor de radios para niveles de LIQUIDO DE FRENOS -->
+                    <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+
+                        <h4 class="mb-2">Liquido de frenos</h4>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="liquido_frenos" id="f_condicion_llegada" value="En condición" disabled>
+                            <label class="custom-control-label" for="f_condicion">En condición</label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="liquido_frenos" id="f_cambio_llegada" value="Cambio" disabled>
+                            <label class="custom-control-label" for="f_cambio">Cambio</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor EQUIPAMIENTO DEL SALIDA Y LLEGADA -->
+    <div class="container col-md-12 row">
+
+        <!-- Salida -->
+        <div class="card border-primary mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-primary text-primary">Equipamiento del vehiculo (salida).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de Equipamiento del vehiculo -->
+                <div class="container">
+
+                    <!-- Contenedor de EQUIPAMIENTO DE VEHICULO -->
+                    <div class="form-row">
+
+                        <div class="col-md-12">
+
+                            <!-- Contenedor de checkbox LLANTA DE REFACCION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="llanta_refaccion_salida" disabled>
+                                <label class="custom-control-label" for="llanta_refaccion">
+                                    Llanta de refacción
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox LLAVE RUEDAS -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="llave_ruedas_salida" disabled>
+                                <label class="custom-control-label" for="llave_ruedas">
+                                    Llave de ruedas
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox VERIFICACION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="verificacion_salida" disabled>
+                                <label class="custom-control-label" for="verificacion">
+                                    Verificación
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox POLIZA -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="poliza_salida" disabled>
+                                <label class="custom-control-label" for="poliza">
+                                    Poliza de seguro
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox GATO -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="gato_salida" disabled>
+                                <label class="custom-control-label" for="gato">
+                                    Gato
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox TARJETA DE CIRCULACION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="t_circulacion_salida" disabled>
+                                <label class="custom-control-label" for="t_circulacion">
+                                    Tarjeta de circulación
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Llegada -->
+        <div class="card border-success mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-success text-success">Equipamiento del vehiculo (llegada).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de Equipamiento del vehiculo -->
+                <div class="container">
+
+                    <!-- Contenedor de EQUIPAMIENTO DE VEHICULO -->
+                    <div class="form-row">
+
+                        <div class="col-md-12">
+
+                            <!-- Contenedor de checkbox LLANTA DE REFACCION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="llanta_refaccion_llegada" disabled>
+                                <label class="custom-control-label" for="llanta_refaccion">
+                                    Llanta de refacción
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox LLAVE RUEDAS -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="llave_ruedas_llegada" disabled>
+                                <label class="custom-control-label" for="llave_ruedas">
+                                    Llave de ruedas
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox VERIFICACION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="verificacion_llegada" disabled>
+                                <label class="custom-control-label" for="verificacion">
+                                    Verificación
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox POLIZA -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="poliza_llegada" disabled>
+                                <label class="custom-control-label" for="poliza">
+                                    Poliza de seguro
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox GATO -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="gato_llegada" disabled>
+                                <label class="custom-control-label" for="gato">
+                                    Gato
+                                </label>
+                            </div>
+
+                            <!-- Contenedor de checkbox TARJETA DE CIRCULACION -->
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" value="" id="t_circulacion_llegada" disabled>
+                                <label class="custom-control-label" for="t_circulacion">
+                                    Tarjeta de circulación
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor EQUIPAMIENTO EXTRA SALIDA Y LLEGADA -->
+    <div class="container col-md-12 row">
+
+        <div class="card border-primary mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-primary text-primary">Equipamiento extra del vehiculo (salida).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de Equipamiento EXTRA del vehiculo -->
+                <div class="container">
+
+                    <!-- Contenedor del elemento COBIJAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="cobijas_salida" disabled>
+                                <label class="custom-control-label" for="cobijas">Cobijas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="cobijas" id="no_cobijas_salida" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento CINCHOS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="cinchos_salida" disabled>
+                                <label class="custom-control-label" for="cinchos">Cinchos</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="cinchos" id="no_cinchos_salida" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento RAMPAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="rampas_salida" disabled>
+                                <label class="custom-control-label" for="rampas">Rampas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="rampas" id="no_rampas_salida" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento MATRACAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="matracas_salida" disabled>
+                                <label class="custom-control-label" for="matracas">Matracas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="matracas" id="no_matracas_salida" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento COLCHONES -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="colchones_salida" disabled>
+                                <label class="custom-control-label" for="colchones">Colchones</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="colchones" id="no_colchones_salida" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card border-success mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-success text-success">Equipamiento extra del vehiculo (llegada).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de Equipamiento EXTRA del vehiculo -->
+                <div class="container">
+
+                    <!-- Contenedor del elemento COBIJAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="cobijas_llegada">
+                                <label class="custom-control-label" for="cobijas">Cobijas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="cobijas" id="no_cobijas_llegada" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento CINCHOS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="cinchos_llegada">
+                                <label class="custom-control-label" for="cinchos">Cinchos</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="cinchos" id="no_cinchos_llegada" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento RAMPAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="rampas_llegada">
+                                <label class="custom-control-label" for="rampas">Rampas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="rampas" id="no_rampas_llegada" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento MATRACAS -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="matracas_llegada">
+                                <label class="custom-control-label" for="matracas">Matracas</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="matracas" id="no_matracas_llegada" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                    <!-- Contenedor del elemento COLCHONES -->
+                    <div class="form-row align-items-center mb-3">
+
+                        <div class="col-auto my-1">
+                            <div class="form-check custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="colchones_llegada">
+                                <label class="custom-control-label" for="colchones">Colchones</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form-control-sm" name="colchones" id="no_colchones_llegada" placeholder="0" disabled>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor del ESTADO DE LIMPIEZA DEL VEHICULO -->
+    <div class="container col-md-12 row">
+
+        <!-- Revisón de niveles de salida -->
+        <div class="card border-primary mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-primary text-primary">Estado de limpieza vehículo (salida).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor del ESTADO DE LIMPIEZA DEL VEHICULO -->
+                <div class="container">
+
+                    <div class="form-row">
+
+                        <div class="col-md-12">
+
+                            <div class="custom-control custom-radio mb-2">
+                                <input type="radio" class="custom-control-input" name="" id="radioLimpia_salida" value="Limpia" disabled>
+                                <label class="custom-control-label" for="radioLimpia">Limpia</label>
+                            </div>
+
+                            <div class="custom-control custom-radio mb-2">
+                                <input type="radio" class="custom-control-input" name="" id="radioSucia_salida" value="Sucia" disabled>
+                                <label class="custom-control-label" for="radioSucia">Sucia</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="" id="radioLavada_salida" value="Lavada" disabled>
+                                <label class="custom-control-label" for="radioLavada">Lavada</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Revision  de niveles de llegada -->
+        <div class="card border-success mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-success text-success">Estado de limpieza vehículo (llegada).</div>
+
+            <div class="card-body">
+
+                <!-- Contenedor del ESTADO DE LIMPIEZA DEL VEHICULO -->
+                <div class="container">
+
+                    <div class="form-row">
+
+                        <div class="col-md-12">
+
+                            <div class="custom-control custom-radio mb-2">
+                                <input type="radio" class="custom-control-input" name="" id="radioLimpia_llegada" value="Limpia" disabled>
+                                <label class="custom-control-label" for="radioLimpia">Limpia</label>
+                            </div>
+
+                            <div class="custom-control custom-radio mb-2">
+                                <input type="radio" class="custom-control-input" name="" id="radioSucia_llegada" value="Sucia" disabled>
+                                <label class="custom-control-label" for="radioSucia">Sucia</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="" id="radioLavada_llegada" value="Lavada" disabled>
+                                <label class="custom-control-label" for="radioLavada">Lavada</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor del NIVEL DE GASOLINA SALIDA Y LLEGADA -->
+    <div class="container col-md-12 row">
+
+        <div class="card border-primary mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-primary text-primary">
+                Nivel de gasolina (salida).
+            </div>
+
+            <div class="card-body">
+
+                <div id="nivel_gas_ida" class="primary-color rounded text-center z-depth-2">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card border-success mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-success text-success">
+                Litros de gasolina (llegada).
+            </div>
+
+            <div class="card-body">
+                <div class="nivel_gas_llegada success-color rounded text-center z-depth-2">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de OBSERVACIONES SALIDA-LLEGADA -->
+    <div class="container col-md-12 row">
+
+        <div class="card border-primary mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-primary text-primary">
+                Observaciones (salida).
+            </div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de las OBSERVACIONES -->
+                <div class="container">
+
+                    <div class="form-row">
+
+                        <textarea class="border-primary form-control rounded-0" name="observaciones" id="observaciones_salida" rows="3" placeholder="Observaciones"
+                            disabled></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card border-success mb-3 container col-md-5">
+
+            <div class="card-header bg-transparent border-success text-success">
+                Observaciones (llegada).
+            </div>
+
+            <div class="card-body">
+
+                <!-- Contenedor de las OBSERVACIONES -->
+                <div class="container">
+
+                    <div class="form-row">
+
+                        <textarea class="border-success form-control rounded-0" name="observaciones" id="observaciones_llegada" rows="3" placeholder="0"
+                            disabled></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de FOTOS SALIDA-LLEGADA -->
+    <div class="container col-md-12 row">
+
+        <!-- Fotos de SALIDA DEL VEHICULO -->
+        <div class="card border-primary mb-3 container col-md-11">
+
+            <div class="card-header bg-transparent border-primary text-primary">
+                Fotos (salida).
+            </div>
+
+            <div class="card-body">
+
+                <div class="container col-md-12 row">
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto1" src="" alt="Foto Revision Inicial Frontal">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Frontal</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto2" src="" alt="Foto Revision Inicial Trasera">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Trasera</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto3" src="" alt="Foto Revision Inicial Frontal">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Izquierda</a>
+                                
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto4" src="" alt="Foto Revision Inicial Trasera">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Derecha</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Fotos de LLEGADA DEL VEHICULO -->
+        <div class="card border-success mb-3 container col-md-11">
+
+            <div class="card-header bg-transparent border-success text-success">
+                Fotos (llegada).
+            </div>
+
+            <div class="card-body">
+
+                <div class="container col-md-12 row">
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto5" src="" alt="Foto Revision Inicial Frontal">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Frontal</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto6" src="" alt="Foto Revision Inicial Trasera">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Trasera</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto7" src="" alt="Foto Revision Inicial Frontal">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">
+                                <a>Imagen Vehículo Izquierda</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card container col-md-5 img-revision-ini">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" id="foto8" src="" alt="Foto Revision Inicial Trasera">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h3 class="card-title text-center">                                
+                                <a>Imagen Vehículo Derecha</a>
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor del BOTON ACEPTAR -->
+    <div class="container col-md-11 mt-4">
+
+        <a href="detalle_viaje.html" class="btn btn-primary btn-lg btn-block">Aceptar</a>
+
+    </div>
+
+
+    <!-- Inicio del footer -->
+    <footer class="colorPrimary container-fluid">
+        <div class="container footer-content">
+            <img class="img-footer" src="img/Logo.png" alt="Logotipo">
+            <p class="footer-text">
+                2018 Sistema de Administración Logística Terrestre (SALT)
+                <br> Todos los derechos reservados &copy;
+            </p>
+            <div class="container links">
+                <p class="footer-text">&copy; 2018 Miguel & Sergio develops Inc. </p>
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/personal.png" alt="BLOG"> Contacto Personal/Blog</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/github.png" alt="GITHUB"> Github</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img src="img/Icons/fb.png" alt="">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap tooltips -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script de funciones -->
+    <script type="text/javascript" src="js/estado_revision.js"></script>
+    <script type="text/javascript" src="js/estado_revision_segunda.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="icon" href="img/Icons/Logo SALT.png">
+    <title>Mantenimientos</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Estilos del sitio web -->
+    <link rel="stylesheet" href="css/form-styles.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+
+</head>
+
+<body>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/verificar_sesion.js"></script>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <a class="navbar-brand d-none d-md-block" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> Sistema de Admininstración
+                Logistíca Terrestre
+            </a>
+
+            <a class="navbar-brand d-sm-none" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> SALT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-lg-row flex-sm-column ml-md-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="principal.html">Inicio
+                            <span class="sr-only">(Inicio)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="#">Reportes
+                            <span class="sr-only">(Reportes)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Menú
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="usuarios.html">
+                                <i class='fa fa-user'></i>Usuarios
+                            </a>
+
+                            <a class="dropdown-item" href="vehiculo.html">
+                                <i class='fa fa-truck'></i>Vehiculos
+                            </a>
+
+                            <a class="dropdown-item" href="viajes.html">
+                                <i class='fa fa-truck'></i>Viajes
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Usuario
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="perfil.html">
+                                <i class='fa fa-user'></i>Perfil
+                            </a>
+                            <a class="dropdown-item" id="salir">
+                                <i class='fa fa-sign-out'></i>Salir
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="ocultar fixed-top alert_mensaje_exito_proveedor alert alert-success" role="alert">
+            <center>
+                <strong>¡Correcto!</strong> Se ha guardado el proveedor.
+            </center>
+        </div>
+
+        <div class="ocultar fixed-top alert_error_proveedor alert alert-danger" role="alert">
+            <center>
+                <strong>¡Ha ocurrido un error!</strong> No se ha podido guardar el proveedor.
+            </center>
+        </div>
+
+    </header>
+
+    <!-- Contenedor del titulo de la UI -->
+    <div class="container-fluid ">
+        <div class="container">
+            <h1 class="title-view text-center">
+                Mantenimientos de los vehículos.
+            </h1>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR DE ESTADISITCAS RÁPIDAS Y PROVEEDORES -->
+    <div class="row">
+
+        <!-- Contenedor DEL SELECTOR DE VEHICULO Y ESTADISTICAS RÁPIDAS -->
+        <div id="view_container" class="card container mr-3 ml-3 col-md-8 form-container">
+
+            <!-- Contenedor del cuerpo de la tarjeta  -->
+            <div class="card-body">
+
+                <!-- Contenedor del Select para vehículos -->
+                <div class="form-row d-flex justify-content-center">
+                    <div class="col-md-6 p-3">
+                        <label for="vehiculo">Seleccione un Vehículo</label>
+                        <select name="vehiculo" id="vehiculo" class="form-control">
+                            <option selected>Vehículos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contenedor de las estadisticas rápidas -->
+                <div class="container mt-4">
+
+                    <!-- CONTENEDOR DE MANTENIMIENTOS TOTALES Y PERIODO DE MANTENIMIENTOS -->
+                    <div class="row">
+
+                        <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                            <h4 class="text-center mt-1">
+                                Mantenimientos totales.
+                            </h4>
+                            <h1 id="mantenimientos_totales">
+                            </h1>
+                        </div>
+
+                        <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                            <h4 class="text-center mt-1">
+                                Periodo de Mantenimientos
+                            </h4>
+                            <h1 class="text-center" id="periodo_matenimientos">
+                            </h1>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                            <h4 class="text-center mt-1">
+                                Siguiente mantenimiento en:
+                            </h4>
+                            <h1 id="siguiente_mant" class="text-center">
+                            </h1>
+                        </div>
+
+                        <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                            <h4 class="text-center mt-1">
+                                Total de gasto en mantenimietos.
+                            </h4>
+                            <h1 id="total_gasto">
+                            </h1>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="container mt-2 p-2 col-md-11 ">
+
+                            <p class="text-left">
+                                Estadistícas rápidas para vehiculo.
+                            </p>
+
+                            <button type="button" class="btn btn-md btn-success" id="agregar-mantenimiento">Agregar mantenimiento</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTENEDOR DE LA LISTA DE PROVEEDORES -->
+        <div class="container col-md-3 mr-3 mt-5 ml-3">
+
+            <!-- LISTA DE PROVEEDORES -->
+            <ul id="lista_proveedores" class="list-group">
+
+                <li class="list-group-item active rounded">Proveedores</li>
+
+            </ul>
+
+            <!-- bOTON PARA AGREGAR MÁS PROVEEDORES -->
+            <button class="btn btn-primary btn-sm mt-4" data-toggle='modal' data-target='#add-proveedor'>Agregar nuevo Proveedor</button>
+
+        </div>
+
+    </div>
+    <!-- CONTENEDOR DE ESTADISITCAS RÁPIDAS Y PROVEEDORES -->
+
+
+    <!-- Contenedor de formulario PARA AGREGAR NUEVOS MANTENIMIENTOS -->
+    <div id="nueva_verificacion" class="card container col-sm-9">
+
+        <div class="card-body">
+
+            <!-- Contenedor del formulario -->
+            <form>
+
+                <h3 class="text-center mt-3 mb-3 title-section">Agregar nuevo mantenimiento</h3>
+
+
+                <!-- FECHA DE REALIZACIÓN Y ENCARGADO -->
+                <div class="form-row">
+
+                    <div class="col-md-6 col-sm-12 mt-3">
+                        <label for="fecha">Fecha de realización</label>
+                        <input type="date" class="form-control" id="fecha_realizacion">
+                    </div>
+
+                    <!-- Contenedor del Select para vehículos -->
+                    <div class="col-md-6 col-sm-12 mt-3">
+                        <label for="conductor">Seleccione al encargado</label>
+                        <select name="conductor" id="conductor" class="form-control">
+
+                        </select>
+                        <small id="error_encargado" class="ocultar ml-2 form-text text-danger">
+                            Debe escoger un encargado.
+                        </small>
+                    </div>
+
+                </div>
+                <!-- FECHA DE REALIZACIÓN Y ENCARGADO -->
+
+
+                <h4 class="text-center text-primary mt-4">Vehículo</h4>
+
+
+                <!-- DETALLES DEL VEHICULO -->
+                <div class="form-row d-flex align-items-end">
+
+                    <div class="col-md-4 col-sm-12 mt-3">
+                        <label for="marca_vehiculo">Vehículo</label>
+                        <input type="text" class="form-control" id="marca_vehiculo" disabled>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 mt-3">
+                        <label for="kilometraje">Kilometraje</label>
+                        <input type="number" class="form-control" id="kilometraje" disabled>
+                    </div>
+
+                    <div class="col-md-2 mt-2 align-self-end">
+                        <button type="button" class="btn btn-md btn-block btn-primary" data-toggle="modal" data-target="#change_km">Cambiar
+                            KM</button>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 mt-3">
+                        <label for="proximo_servicio">Próximo Servicio</label>
+                        <input type="number" class="form-control" id="proximo_servicio" disabled>
+                    </div>
+
+                </div>
+                <!-- DETALLES DEL VEHICULO -->
+
+                <div class="form-row mt-4">
+                    <input type="button" id="aceptar" class="btn btn-lg btn-primary" data-toggle='modal' data-target='#add-verificacion' value="Aceptar">
+                    <input type="button" id="cancelar" class="btn btn-lg btn-danger" value="Cancelar">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div id="mantenimientos" class="card container col-sm-9">
+
+        <!-- SECCION DE SERVICIOS REALIZADOS -->
+        <h3 class="text-center text-primary mt-5">Mantenimientos realizados</h3>
+
+
+        <!-- CONTENEDOR DEL ACORDEÓN DE LA LISTA DE MANTENIMIENTOS -->
+        <div class="accordion mb-5" id="lista_mantenimientos">
+
+
+            <!-- CONTENEDOR DE MANTENIMIENTOS DE BALATAS, ACEITES Y FILTROS -->
+            <div class="card">
+
+                <!-- CONTENEDOR DE LA CABECERA DEL ACORDEON -->
+                <a class="card-header" data-toggle="collapse" data-target="#balatas_card" aria-expanded="true" aria-controls="balatas_card"
+                    id="balatas_header">
+                    <h5 class="mt-1 mb-0">
+                        <span class="text-primary">Cambios de Aceite y Filtros - Balatas</span>
+                        <i class="fa fa-angle-down "></i>
+                    </h5>
+                </a>
+
+
+
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+                <div id="balatas_card" class="collapse" aria-labelledby="balatas_header" data-parent="#lista_mantenimientos">
+
+                    <div class="card-body row">
+
+                        <!-- CONTENEDOR DEL ELEMENTO DE ACEITE Y FILTROS  -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-uppercase text-primary">Aceite y Filtros.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3 ">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_cambios" id="desicion_cambios_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_cambios_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_cambios" id="desicion_cambios_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_cambios_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CUERPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "CAMBIO DE ACEITE" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Cambio de Aceite</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_aceite" id="c_aceite_si" disabled>
+                                                    <label class="custom-control-label" for="c_aceite_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_aceite" id="c_aceite_no" disabled>
+                                                    <label class="custom-control-label" for="c_aceite_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "FILTRO DE ACEITE" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Cambio de filtro de Aceite</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_aceite" id="c_filtro_aceite_si" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_aceite_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_aceite" id="c_filtro_aceite_no" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_aceite_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "FILTRO DE COMBUSTIBLE" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Cambio de filtro de Combustible</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_combustible" id="c_filtro_combustible_si" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_combustible_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_combustible" id="c_filtro_combustible_no" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_combustible_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "FILTRO DE AIRE" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Cambio de filtro de Aire</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_aire" id="c_filtro_aire_si" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_aire_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_filtro_aire" id="c_filtro_aire_no" disabled>
+                                                    <label class="custom-control-label" for="c_filtro_aire_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_cambios">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_cambios" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para vehículos -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_cambios">Proveedor</label>
+
+                                    <select name="proveedor_cambios" id="proveedor_cambios" class="proveedores form-control" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_cambios" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ELEMENTO BALATAS  -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER DE LA TARJETA -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-primary">BALATAS.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_balatas" id="desicion_balatas_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_balatas_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_balatas" id="desicion_balatas_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_balatas_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CONTENEDOR DEL CUEPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "TRASERA" -->
+                                        <tr>
+
+                                            <th colspan="2" scope="row">Trasera</th>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_balatas_trasera" id="c_balatas_trasera_si" disabled>
+                                                    <label class="custom-control-label" for="c_balatas_trasera_si"></label>
+                                                </div>
+
+                                            </td>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_balatas_trasera" id="c_balatas_trasera_no" disabled>
+                                                    <label class="custom-control-label" for="c_balatas_trasera_no"></label>
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <!-- COLUMNA "DELANTERA" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Delantera</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_balatas_delantera" id="c_balatas_delantera_si" disabled>
+                                                    <label class="custom-control-label" for="c_balatas_delantera_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_balatas_delantera" id="c_balatas_delantera_no" disabled>
+                                                    <label class="custom-control-label" for="c_balatas_delantera_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_balatas">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_balatas" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para PROVEEDORES -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_balatas">Proveedor</label>
+
+                                    <select name="proveedor_balatas" id="proveedor_balatas" class="form-control proveedores" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_balatas" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+
+
+            </div>
+            <!-- CONTENEDOR DE MANTENIMIENTOS DE BALATAS, ACEITES Y FILTROS -->
+
+
+            <!-- CONTENEDOR DE MANTENIMIENTOS DE INYECTORES BUJIAS Y CAMBIO DE LLANTAS -->
+            <div class="card">
+
+                <a class="card-header" data-toggle="collapse" data-target="#mantenimiento_2" aria-expanded="true" aria-controls="mantenimiento_2"
+                    id="segundo_mantenimiento">
+                    <h5 class="mt-1 mb-0">
+                        <span class="text-primary">Inyectores y bujías - Cambio de llantas</span>
+                        <i class="fa fa-angle-down "></i>
+                    </h5>
+                </a>
+
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+                <div id="mantenimiento_2" class="collapse" aria-labelledby="segundo_mantenimiento" data-parent="#lista_mantenimientos">
+
+                    <div class="card-body row">
+
+                        <!-- CONTENEDOR DEL ELEMENTO DE INYECTORES Y BUJÍAS -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-uppercase text-primary">Inyectores y bujías.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3 ">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_bujias" id="desicion_bujias_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_bujias_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_bujias" id="desicion_bujias_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_bujias_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CUERPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "LAVADO DE INYECTORES" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Lavado de Inyectores</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="lavado_inyectores" id="lavado_inyectores_si" disabled>
+                                                    <label class="custom-control-label" for="lavado_inyectores_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="lavado_inyectores" id="lavado_inyectores_no" disabled>
+                                                    <label class="custom-control-label" for="lavado_inyectores_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "CAMBIO DE BUJIAS" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Cambio de Bujías</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_bujias" id="c_bujias_si" disabled>
+                                                    <label class="custom-control-label" for="c_bujias_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_bujias" id="c_bujias_no" disabled>
+                                                    <label class="custom-control-label" for="c_bujias_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "REEMPLAZO DE CABLES DE BUJIA" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Reemplazo de cables de bujía</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="cable_bujia" id="cable_bujia_si" disabled>
+                                                    <label class="custom-control-label" for="cable_bujia_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="cable_bujia" id="cable_bujia_no" disabled>
+                                                    <label class="custom-control-label" for="cable_bujia_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_bujias">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_bujias" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para vehículos -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_bujias">Proveedor</label>
+
+                                    <select name="proveedor_bujias" id="proveedor_bujias" class="proveedores form-control" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_bujias" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ELEMENTO CAMBIO DE LLANTAS  -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER DE LA TARJETA -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-primary">CAMBIO DE LLANTAS.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_llantas" id="desicion_llantas_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_llantas_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_llantas" id="desicion_llantas_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_llantas_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CONTENEDOR DEL CUEPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "TRASERAS" -->
+                                        <tr>
+
+                                            <th colspan="2" scope="row">Traseras</th>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_llantas_traseras" id="c_llantas_traseras_si" disabled>
+                                                    <label class="custom-control-label" for="c_llantas_traseras_si"></label>
+                                                </div>
+
+                                            </td>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_llantas_traseras" id="c_llantas_traseras_no" disabled>
+                                                    <label class="custom-control-label" for="c_llantas_traseras_no"></label>
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <!-- COLUMNA "DELANTERAS" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Delanteras</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_llantas_del" id="c_llantas_del_si" disabled>
+                                                    <label class="custom-control-label" for="c_llantas_del_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_llantas_del" id="c_llantas_del_no" disabled>
+                                                    <label class="custom-control-label" for="c_llantas_del_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_llantas">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_llantas" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para PROVEEDORES -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_llantas">Proveedor</label>
+
+                                    <select name="proveedor_llantas" id="proveedor_llantas" class="form-control proveedores" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_llantas" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+
+            </div>
+            <!-- CONTENEDOR DE MANTENIMIENTOS DE INYECTORES BUJIAS Y CAMBIO DE LLANTAS -->
+
+
+            <!--  CONTENEDOR DE MANTENIMIENTOS DE ALINEACION Y BALANCEO Y REEMPLAZO AMORTIGUADORES-->
+            <div class="card">
+
+                <a class="card-header" id="tercer_mantenimiento" data-toggle="collapse" data-target="#mantenimiento_3" aria-expanded="false"
+                    aria-controls="mantenimiento_3">
+
+                    <h5 class="mt-1 mb-0">
+                        <span class="text-primary">Balanceo y Alineacion - REEMPLAZO de AMORTIGUADORES</span>
+                        <i class="fa fa-angle-down "></i>
+                    </h5>
+
+                </a>
+
+
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+                <div id="mantenimiento_3" class="collapse" aria-labelledby="tercer_mantenimiento" data-parent="#lista_mantenimientos">
+
+                    <div class="card-body row">
+
+                        <!-- CONTENEDOR DEL ELEMENTO DE ALINEACION Y BALANCEO -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-primary">ALINEACION Y BALANCEO.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3 ">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_alineacion" id="desicion_alineacion_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_alineacion_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_alineacion" id="desicion_alineacion_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_alineacion_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CUERPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "ALINEACION" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Alineación</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="alineacion" id="alineacion_si" disabled>
+                                                    <label class="custom-control-label" for="alineacion_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="alineacion" id="alineacion_no" disabled>
+                                                    <label class="custom-control-label" for="alineacion_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- COLUMNA "BALANCEO" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Balanceo</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="balanceo" id="balanceo_si" disabled>
+                                                    <label class="custom-control-label" for="balanceo_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="balanceo" id="balanceo_no" disabled>
+                                                    <label class="custom-control-label" for="balanceo_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_ali_bal">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_ali_bal" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para vehículos -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_ali_bal">Proveedor</label>
+
+                                    <select name="proveedor_ali_bal" id="proveedor_ali_bal" class="proveedores form-control" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_ali_bal" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ELEMENTO REEMPLAZO AMORTIGUADORES  -->
+                        <div class="card container p-0 col-md-5 border-primary mb-3">
+
+                            <!-- CONTENEDOR DEL HEADER DE LA TARJETA -->
+                            <div class="card-header border-primary">
+
+                                <h3 class="text-center text-primary">REEMPLAZO DE AMORTIGUADORES.</h3>
+
+                                <hr>
+
+                                <!-- Contenedor de radios DE CONFIRMACION (SI, NO) -->
+                                <div class="form-row container mt-3">
+
+                                    <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Realizado?</h5>
+
+                                    <div class=" custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_reemplazo_amor" id="desicion_reemplazo_amor_si" value="SI">
+                                        <label class="custom-control-label" for="desicion_reemplazo_amor_si">SI</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio ml-3">
+                                        <input type="radio" class="custom-control-input" name="desicion_reemplazo_amor" id="desicion_reemplazo_amor_no" value="NO">
+                                        <label class="custom-control-label" for="desicion_reemplazo_amor_no">NO</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- CONTENEDOR DEL CUEPO DEL FORMULARIO -->
+                            <div class="card-body">
+
+                                <!-- TABLA CON OPCIONES DE MANTENIMIENTO -->
+                                <table class="table table-hover">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">SI</th>
+                                            <th scope="col">NO</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <!-- COLUMNA "TRASERAS" -->
+                                        <tr>
+
+                                            <th colspan="2" scope="row">Traseros</th>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_amortiguador_trasero" id="c_amortiguador_trasero_si" disabled>
+                                                    <label class="custom-control-label" for="c_amortiguador_trasero_si"></label>
+                                                </div>
+
+                                            </td>
+
+                                            <td>
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_amortiguador_trasero" id="c_amortiguador_trasero_no" disabled>
+                                                    <label class="custom-control-label" for="c_amortiguador_trasero_no"></label>
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <!-- COLUMNA "DELANTERAS" -->
+                                        <tr>
+                                            <th colspan="2" scope="row">Delanteros</th>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_amortiguadores_del" id="c_amortiguadores_del_si" disabled>
+                                                    <label class="custom-control-label" for="c_amortiguadores_del_si"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="radio" class="custom-control-input" name="c_amortiguadores_del" id="c_amortiguadores_del_no" disabled>
+                                                    <label class="custom-control-label" for="c_amortiguadores_del_no"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                            <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                            <div class="card-footer border-top border-primary">
+
+                                <label class="mt-3" for="importe_amortiguadores">Importe</label>
+
+                                <div class="input-group mb-3">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+
+                                    <input type="number" id="importe_amortiguadores" class="form-control" aria-label="Importe" disabled>
+
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Contenedor del Select para PROVEEDORES -->
+                                <div class="mt-3">
+
+                                    <label for="proveedor_llantas">Proveedor</label>
+
+                                    <select name="proveedor_amortiguadores" id="proveedor_amortiguadores" class="form-control proveedores" disabled>
+                                        <option selected>Proveedor</option>
+                                    </select>
+
+                                    <small id="error_proveedor_amortiguadores" class="ml-2 form-text text-danger">
+                                        Debe escoger un proveedor.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- CONTENEDOR DE LOS ELEMENTOs COLAPSADOS -->
+
+            </div>
+            <!--  CONTENEDOR DE MANTENIMIENTOS DE ALINEACION Y BALANCEO Y REEMPLAZO AMORTIGUADORES-->
+
+
+            <!-- CONTENEDOR DE MANTENIMIENTOS "OTROS" -->
+            <div class="card">
+
+                <a class="card-header" id="cuarto_mantenimiento" data-toggle="collapse" data-target="#mantenimiento_4" aria-expanded="false"
+                    aria-controls="mantenimiento_4">
+                    <h5 class="mt-1 mb-0">
+                        <span class="text-primary">OTROS</span>
+                        <i class="fa fa-angle-down "></i>
+                    </h5>
+                </a>
+
+                <div id="mantenimiento_4" class="collapse" aria-labelledby="cuarto_mantenimiento" data-parent="#lista_mantenimientos">
+
+                    <!-- CONTENEDOR DEL ELEMENTO OTROS -->
+                    <div class="card container p-0 col-md-11 border-primary mb-3">
+
+                        <!-- CONTENEDOR DEL HEADER -->
+                        <div class="card-header border-primary">
+
+                            <h3 class="text-center text-primary">OTROS.</h3>
+
+                        </div>
+
+                        <!-- CUERPO DEL FORMULARIO -->
+                        <div class="card-body">
+
+                            <!-- Contenedor de radios DE CONFIRMACION OTRO REEMPLAZO (SI, NO) -->
+                            <div class="form-row container mt-3 ">
+
+                                <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Otro reemplazo?</h5>
+
+                                <div class=" custom-control custom-radio ml-3">
+                                    <input type="radio" class="custom-control-input" name="desicion_reemplazo" id="desicion_reemplazo_si" value="SI">
+                                    <label class="custom-control-label" for="desicion_reemplazo_si">SI</label>
+                                </div>
+
+                                <div class="custom-control custom-radio ml-3">
+                                    <input type="radio" class="custom-control-input" name="desicion_reemplazo" id="desicion_reemplazo_no" value="NO">
+                                    <label class="custom-control-label" for="desicion_reemplazo_no">NO</label>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="col-md-12 col-sm-12 mt-3">
+                                    <label for="otro_reemplazo">Especificaciones</label>
+                                    <textarea class="form-control" id="otro_reemplazo" rows="3" disabled></textarea>
+                                </div>
+
+                            </div>
+
+                            <!-- Contenedor de radios DE CONFIRMACION TRABAJO EXTRA (SI, NO) -->
+                            <div class="form-row container mt-5">
+
+                                <h5 class="mb-2 ml-2 text-uppercase text-primary">¿Trabajo extra?</h5>
+
+                                <div class=" custom-control custom-radio ml-3">
+                                    <input type="radio" class="custom-control-input" name="desicion_extra" id="desicion_extra_si" value="SI">
+                                    <label class="custom-control-label" for="desicion_extra_si">SI</label>
+                                </div>
+
+                                <div class="custom-control custom-radio ml-3">
+                                    <input type="radio" class="custom-control-input" name="desicion_extra" id="desicion_extra_no" value="NO">
+                                    <label class="custom-control-label" for="desicion_extra_no">NO</label>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="col-md-12 col-sm-12 mt-3">
+                                    <label for="especificaciones_extra">Especificaciones</label>
+                                    <textarea class="form-control" id="especificaciones_extra" rows="3" disabled></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DE SELECT CON IMPORTE Y PROVEEDOR -->
+                        <div class="card-footer border-top border-primary">
+
+                            <label class="mt-3" for="importe_otros">Importe</label>
+
+                            <div class="input-group mb-3">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+
+                                <input type="number" id="importe_otros" class="form-control" aria-label="Importe" disabled>
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+
+                            </div>
+
+                            <!-- Contenedor del Select para proveedores -->
+                            <div class="mt-3">
+
+                                <label for="proveedor_otros">Proveedor</label>
+
+                                <select name="proveedor_otros" id="proveedor_otros" class="proveedores form-control" disabled>
+                                    <option selected>Proveedor</option>
+                                </select>
+
+                                <small id="error_proveedor_otros" class="ml-2 form-text text-danger">
+                                    Debe escoger un proveedor.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- CONTENEDOR DEL ELEMENTO OTROS -->
+
+                </div>
+
+            </div>
+            <!-- CONTENEDOR DE MANTENIMIENTOS "OTROS" -->
+
+
+        </div>
+        <!-- CONTENEDOR DEL ACORDEÓN DE LA LISTA DE MANTENIMIENTOS -->
+    </div>
+
+    <!-- Contenedor de la tabla -->
+    <div class="table-responsive container-fluid table-container col-sm-11">
+        <table id="dt_verificaciones" class="table display table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Fecha de Verificación</th>
+                    <th>Proveedor</th>
+                    <th>Importe</th>
+                    <th>Encargado</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- Modal para AGREGAR MANTENIMIENTO -->
+    <div class="modal fade" id="add-verificacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div class="col-md-12">
+                        <center>
+                            <h5 class="modal-title" id="exampleModalLabel">¿Agregar mantenimiento?</h5>
+                        </center>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="text-center">
+                        <strong>¡OJO!</strong> Una vez insertado
+                        <strong>NO</strong> se podrá editar la información.
+                        <br>
+                        <br> ¿Desea continuar?</h6>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="aceptar-insertar" class="btn btn-primary">Agregar</button>
+                    <button type="button" id="cancelar-adicion" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal para editar el kilometraje del vehiculo -->
+    <div class="modal fade" id="change_km" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div class="container">
+
+                        <div class="ocultar alert_mensaje_kil alert alert-danger col-md-12" role="alert">
+                            <center>
+                                <strong>¡Error!</strong> El kilometraje no puede ser menor al anterior registrado.
+                            </center>
+                        </div>
+
+                        <div class="col-md-12">
+                            <center>
+                                <h5 class="modal-title" id="exampleModalLabel">Escriba el kilometraje nuevo del vehículo</h5>
+                            </center>
+                        </div>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="" method="POST">
+
+                        <input type="hidden" name="opcion4" id="opcion4">
+
+                        <div class="form-row">
+
+                            <div class="col-md-12">
+                                <div class="md-form form-group">
+                                    <input type="number" autocomplete="cc-number" class="form-control" id="n_kilometraje">
+                                    <label for="n_kilometraje">Nuevo kilometraje</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="update_kilometraje" class="btn btn-primary">Actualizar kilometraje</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal para ELIMINAR PROVEEDOR -->
+    <div class="modal fade" id="eliminar_proveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div class="col-md-12">
+                        <center>
+                            <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Proveedor?</h5>
+                        </center>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="text-center">
+                        <strong>¡OJO!</strong> Se eliminará el registro para siempre
+                        <strong>NO</strong> se podrá recuperar la información.
+                        <br>
+                        <br> ¿Desea continuar?</h6>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="eliminar-proveedor" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal para AGREGAR PROVEEDOR -->
+    <div class="modal fade" id="add-proveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div class="container">
+
+                        <div class="col-md-12">
+                            <center>
+                                <h5 class="modal-title" id="exampleModalLabel">Agregue un nuevo proveedor</h5>
+                            </center>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form>
+
+                        <input type="hidden" id="opcion" value="registrar_proveedor">
+
+                        <div class="form-row">
+
+                            <div class="col-md-12">
+
+                                <div class="md-form form-group">
+                                    <input type="text" class="form-control" id="proveedor_nombre">
+                                    <label for="proveedor_nombre">Proveedor</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+
+                                <div class="md-form form-group">
+                                    <input type="text" class="form-control" id="proveedor_direccion">
+                                    <label for="proveedor_direccion">Direccion (Opcional)</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+
+                                <div class="md-form form-group">
+                                    <input type="number" class="form-control" id="proveedor_numero">
+                                    <label for="proveedor_numero">Número (Opcional)</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="button_proveedor" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Inicio del Footer 
+    ==========================================-->
+    <footer class="colorPrimary container-fluid">
+
+        <div class="container footer-content">
+            <img class="img-footer" src="img/Logo.png" alt="Logotipo">
+            <p class="footer-text">
+                2018 Sistema de Administración Logística Terrestre (SALT)
+                <br> Todos los derechos reservados &copy;
+            </p>
+
+            <div class="container links">
+                <p class="footer-text">&copy; 2018 Miguel & Sergio develops Inc. </p>
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/personal.png" alt="BLOG"> Contacto Personal/Blog</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/github.png" alt="GITHUB"> Github</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img src="img/Icons/fb.png" alt="">Facebook</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Data tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- sweetalert para mensajes-->
+    <script src="js/sweetalert.min.js"></script>
+
+    <!-- Script a las funciones -->
+    <script type="text/javascript" src="js/mantenimientos.js"></script>
+
+</body>
+
+</html>

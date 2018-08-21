@@ -1,0 +1,33 @@
+.form-container{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+form#actualizar .btn{
+    margin-top: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form#agregar .btn{
+    margin-top: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-login{
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+}
+
+
+.loading{
+    width: 35%;
+    height: 35%;
+    display: block;
+    margin: auto;
+}
+

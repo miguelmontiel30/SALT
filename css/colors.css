@@ -1,0 +1,15 @@
+.colorPrimary{
+    background: rgb(0, 123, 255);  
+}
+
+.colorDark{
+    background: rgb(0, 80, 203);
+}
+
+.colorAcent{
+    background: rgb(105, 169, 255);
+}
+
+.desarrollador, .img-redes{
+    color: white;
+}

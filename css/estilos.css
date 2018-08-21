@@ -1,0 +1,98 @@
+.card{
+    margin-top: 40px;
+}
+
+footer{
+    margin-top: 50px;    
+} 
+
+.title-view{
+    margin-top: 15px;
+    color: #6068FF;
+}
+
+.title-section{     
+    color: #007bff;
+}
+
+.sub-title{     
+    color: #8C93FF;
+}
+
+.table-container{
+    margin-top: 30px;    
+}
+
+.footer-text{
+    text-align: center;
+    color: white;
+}
+
+.footer-links{
+    color: white;
+    
+}
+
+.links{
+    text-align: center;
+}
+
+.footer-content{
+    padding: 15px; 
+}
+
+.ocultar{
+    display: none;
+}
+
+.totales{
+    color: #007bff;
+}
+
+.img-revision-ini{
+    padding: 0px;
+}
+
+.img-revision-ini-body{
+    padding: 0px;
+    padding-top: 20px;        
+    height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.color1{
+    background: palegoldenrod;
+}
+.color2{
+    background: rgb(67, 175, 157);
+}
+.color3{
+    background: rgb(238, 42, 42);
+}
+.color4{
+    background: rgb(100, 43, 233);
+}
+.color5{
+    background: rgb(129, 253, 46);
+}
+.color6{
+    background: rgb(128, 255, 55);
+}

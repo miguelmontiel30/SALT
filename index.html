@@ -1,167 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="img/Icons/Logo SALT.png">
+    <title>Inicia Sesión</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Esta página es para publicidad del Colegio GMG">
-    <meta name="author" content="">
-
-    <!-- Icono y titulo del encabezado -->
-    <link rel="icon" href="imagenes/Logo.png">
-    <title>GMG</title>
-
-    <!-- Vinculos hacia los CSS y Bootstrap CSS-->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <!-- Estilos -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Estilos del sitio web -->
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/form-styles.css" rel="stylesheet">
+    <script src="js/no_back.js"></script>
 
 </head>
 
-<body>
+<body onload="nobackbutton();">
 
-    <script src="js/plugins.js"></script>
+    <div id="mensaje-error">
 
-    <!-- Inicio de la cabecera de la página 
-    ==========================================-->
-    <header>
+    </div>
 
-        <!-- Barra de navegación 
-        ==========================================-->
-        <nav class="navbar container-fluid navbar-fixed-top navbar-default" role="navigation">
-
-            <!-- Cabecera de el contenido del navheader -->
-            <div class="navbar-header">
-
-                <!-- Botón para abrir navegación en Dispositivos Móbiles-->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Abrir navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Enlace con el Logotipo de la escuela-->
-                <a class="" href="#">
-                    <img alt="Brand" src="imagenes/Logo.png">
-                    <p class="pull-right navbar-text hidden-xs hidden-sm">Colegio Gabriel Mancera García</p>
-                    <p class="pull-right navbar-text hidden-md hidden-lg">Colegio GMG</p>
-                </a>
-
-            </div>
-
-
-            <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-                     otro elemento que se pueda ocultar al minimizar la barra -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="conocenos.html">Conócenos</a>
-                    </li>
-                    <li>
-                        <a href="#">Inicie Sesión</a>
-                    </li>
-                </ul>
-            </div>
-
-        </nav>
-        <!-- Fin de la barra de Navegación 
-        ==========================================-->
-
-
-        <!-- Carousel
-        ==========================================-->
-        <div class="container-fluid">
-            <div class="container-fluid col-md-12">
-                <div id="carousel-1" class="carousel slide" data-ride="carousel">
-
-                    <!-- Indicadores (Circulos abajo de las imagenes) 
-                ==========================================-->
-
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-1" data-slide-to="1" class=""></li>
-                        <li data-target="#carousel-1" data-slide-to="2" class=""></li>
-                    </ol>
-
-                    <!-- Fin de los indicadores 
-                ==========================================-->
-
-                    <!-- Contenedor de los slides 
-                ==========================================-->
-                    <div class="carousel-inner" role="listbox">
-
-                        <!-- Contenedor del Primer Slider -->
-                        <div class="item active">
-                            <img class="img-responsive" src="imagenes/img_slider_1.png" alt="Primer Slider">
-                        </div>
-
-                        <!-- Contenedor del Segundo Slider -->
-                        <div class="item">
-                            <img class="img-responsive" src="imagenes/img_slider_2.jpg" class="slider" alt="Segundo Slider">
-
-                            <!-- Contenedor del Texto del Slider -->
-                            <div class="carousel-caption">
-                                <h1 class="">Consulta calificaciones</h1>
-                                <p>
-                                    <a href="padres.html" class="btn btn-success">Click Aqui</a>
-                                </p>
-                                <p>
-                                    <strong>Colegio Gabriel Mancera García</strong>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Contenedor del Tercer Slider -->
-                        <div class="item">
-                            <img class="img-responsive" src="imagenes/img_slider_3.jpg" class="slider" alt="">
-                            <!-- Contenedor del Texto del Slider -->
-                            <div class="carousel-caption">
-                                <h1>Nuestra visión y Misión</h1>
-                                <p>
-                                    <a href="nosotros.html" class="btn btn-success">Click Aqui</a>
-                                </p>
-                                <p>
-                                    <strong> Gabriel Mancera García</strong>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Fin del contenedor de los Slides
-                    ==========================================-->
-
-                    <!-- Controles para cambiar de Imagenes 
-                ============ Control Izquierda ===========-->
-                    <a href="#carousel-1" class="left carousel-control" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <!--============ Control Derecha ===========-->
-                    <a href="#carousel-1" class="right carousel-control" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Siguiente</span>
-                    </a>
-                    <!-- Fin de los Controles
-                ==========================================-->
-                </div>
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="container col-sm-12">
+                <h1 class="title-view text-center">
+                    Inicia Sesión en el sistema
+                </h1>
             </div>
         </div>
-        <!-- Fin del Carousel
-        ==========================================-->
+    </div>
 
-    </header>
-    <!-- Fin de la cabecera 
-    ==========================================-->
+    <!-- Contenedor del formulario -->
+    <div class="card container col-sm-12 col-md-5">
+        <div class="card-body">
+            <!-- Contenedor del formulario -->
+            <form class="container form" method="POST">
 
-    
+                <div class="form-row">
+
+                    <div class="col-md-12">
+                        <div class="md-form form-group">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="email" class="form-control" id="correo" name="correo" required>
+                            <label for="user">Correo</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="md-form form-group">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" class="form-control" name="contrasenia" id="contrasenia" required>
+                            <label for="pass">Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loading-container">
+
+                </div>
+                <button type="submit" name="iniciar" class="btn btn-login iniciar btn-primary">Iniciar Sesión</button>
+
+            </form>
+
+        </div>
+    </div>
 
 
-    <!-- Vinculos a JavaScript y JQuery -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Scripts a los archivos JS -->
+    <script type="text/javascript" src="js/login_user.js"></script>
+
 </body>
 
 </html>

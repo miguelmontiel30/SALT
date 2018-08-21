@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bienvenido</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Estilos del sitio web -->
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/form-styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/resources.css">
+    <link rel="stylesheet" type="text/css" href="css/colors.css">
+
+</head>
+
+<body>    
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/verificar_sesion.js"></script>
+
+    <header>
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <a class="navbar-brand d-none d-md-block" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> Sistema de Admininstración Logistíca Terrestre
+            </a>
+
+            <a class="navbar-brand d-sm-none" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> SALT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-lg-row flex-sm-column ml-md-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="principal.html">Inicio
+                            <span class="sr-only">(Inicio)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="#">Reportes
+                            <span class="sr-only">(Reportes)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Menú
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="usuarios.html">
+                                <i class='fa fa-user'></i>Usuarios
+                            </a>
+
+                            <a class="dropdown-item" href="vehiculo.html">
+                                <i class='fa fa-truck'></i>Vehiculos
+                            </a>
+
+                            <a class="dropdown-item" href="viajes.html">
+                                <i class='fa fa-truck'></i>Viajes
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Usuario
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item active" href="#">
+                                <i class='fa fa-user'></i>Perfil
+                            </a>
+                            <a class="dropdown-item" id="salir">
+                                <i class='fa fa-sign-out'></i>Salir
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- Fin de la Barra de navegación -->
+
+        <!-- Mensajes de alerta al usuario -->
+
+        <div class="ocultar fixed-top alert_mensaje_exito alert alert-success" role="alert">
+            <center>
+                <strong>¡Correcto!</strong> Los datos se han actualizado correctamente.
+            </center>
+        </div>
+
+        <div class="ocultar fixed-top alert_mensaje_contrac alert alert-success" role="alert">
+            <center>
+                <strong>¡Correcto!</strong> La contraseña se ha actualizado correctamente.
+            </center>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container  col-sm-12">
+                    <h1 class="sms-bienvenida title-view text-center">
+                        Usuario
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fin de los Mensajes de alerta al usuario -->
+    </header>
+
+    <!-- Contenedor del formulario para editar perfil -->
+    <div id="add_container" class="card container col-sm-5 form-container">
+
+        <!-- Contenedor del cuerpo de la tarjeta  -->
+        <div class="card-body">
+
+            <h3 class="text-center"> Edita las opciones del perfil </h3>
+
+            <!-- Contenedor del formulario -->
+            <form class="container" id="usuario_form" method="POST">
+
+                <div class="container">
+                    <img type="image" class="rounded-circle d-block mx-auto" src="img/user-1.png" width="120" height="120" alt="">
+                </div>
+
+                <input type="hidden" id="id_usuario" name="id_usuario" value="">
+                <input type="hidden" id="opcion" name="opcion" value="">
+
+                <div class="form-row mt-4">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" name="apellido" id="apellido">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-row ">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico</label>
+                            <input type="email" name="correo" class="form-control" id="correo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="correo">Rol</label>
+                            <input type="text" autocomplete="" name="rol" class="form-control" id="rol" disabled>
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="submit" id="actualizar-user" style="margin-top: 15px;" class="btn btn-blue" value="Actualizar">
+                <button type="button" id="actualizar-contra" style="margin-top: 15px;" data-toggle="modal" data-target="#change_pass" class="btn btn-blue-grey">
+                    Cambiar contraseña</button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="change_pass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div class="container">
+                        <div class="ocultar alert_mensaje_contrasenias alert alert-danger col-md-12" role="alert">
+                            <center>
+                                <strong>¡Error!</strong> Las contraseñas deben coincidir.
+                            </center>
+                        </div>
+                        <div class="container">
+                            <div class="ocultar alert_mensaje_contrasenias2 alert alert-danger col-md-12" role="alert">
+                                <center>
+                                    <strong>¡Error!</strong> Las contraseñas no pueden estar vacias.
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <center>
+                                <h5 class="modal-title" id="exampleModalLabel">Escriba su nueva contraseña</h5>
+                            </center>
+                        </div>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <div class="form-row">
+
+                            <div class="col-md-12">
+                                <div class="md-form form-group">
+                                    <input type="password" autocomplete="new-password" class="form-control" id="contrasenia">
+                                    <label for="contrasenia">Nueva Contraseña</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="md-form form-group">
+                                    <input type="password" autocomplete="new-password" class="form-control" id="contrasenia2">
+                                    <label for="contrasenia2">Repetir Contraseña</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button_contrasenia" class="btn btn-primary">Actualizar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Inicio del Footer 
+    ==========================================-->
+    <footer class="colorPrimary container-fluid">
+
+        <div class="container footer-content">
+            <img class="img-footer" src="img/Logo.png" alt="Logotipo">
+            <p class="footer-text">
+                2018 Sistema de Administración Logística Terrestre (SALT)
+                <br> Todos los derechos reservados &copy;
+            </p>
+
+            <div class="container links">
+                <p class="footer-text">&copy; 2018 Miguel & Sergio develops Inc. </p>
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/personal.png" alt="BLOG"> Contacto Personal/Blog</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/github.png" alt="GITHUB"> Github</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img src="img/Icons/fb.png" alt="">Facebook</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Script a las funciones -->
+    <script type="text/javascript" src="js/perfil.js"></script>
+
+</body>
+
+</html>

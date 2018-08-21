@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="icon" href="img/Icons/Logo SALT.png">
+    <title>Bienvenido</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Estilos del sitio web -->
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/form-styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/resources.css">
+    <link rel="stylesheet" type="text/css" href="css/colors.css">
+    <script src="js/no_back.js"></script>
+
+</head>
+
+<body onload="nobackbutton();">
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/verificar_sesion.js"></script>
+
+    <header>
+
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <a class="navbar-brand d-none d-md-block" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> Sistema de Admininstración Logistíca Terrestre
+            </a>
+
+            <a class="navbar-brand d-sm-none" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> SALT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-lg-row flex-sm-column ml-md-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="#">Reportes
+                            <span class="sr-only">(Reportes)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Menú
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="usuarios.html">
+                                <i class='fa fa-user'></i>Usuarios
+                            </a>
+
+                            <a class="dropdown-item" href="vehiculo.html">
+                                <i class='fa fa-truck'></i>Vehiculos
+                            </a>
+
+                            <a class="dropdown-item" href="viajes.html">
+                                <i class='fa fa-truck'></i>Viajes
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Usuario
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="perfil.html">
+                                <i class='fa fa-user'></i>Perfil
+                            </a>
+                            <a class="dropdown-item" id="salir">
+                                <i class='fa fa-sign-out'></i>Salir
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- Fin de la Barra de navegación -->
+
+        <!-- Mensaje de bienvenida al usuario -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container  col-sm-12">
+                    <h1 class="sms-bienvenida title-view text-center">
+
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- Contenedor de los Breadcrums -->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <img class="br-img" src="img/Icons/home.png" alt="Principal">
+                <li class="breadcrumb-item">
+                    <a href="#">Principal</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Panel de Control
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Contenedor del titulo del Dashboard -->
+    <div class="container dash-title">
+        <h2 class="main-title border-right">
+            Panel de Control
+        </h2>
+        <em class="align-top">
+            Consultas con la mayor rápidez.
+        </em>
+    </div>
+
+    <!-- Contenedor de las estadisticas rápidas de viajes -->
+    <div class="container">
+
+        <div class="container row border rounded">
+
+            <div class="container col-md-4 col-sm-4 border-right" id="viajes_transcurso">
+                <h3 class="text-center text-primary">
+                    Viajes en transcurso
+                </h3>
+            </div>
+
+            <div class="container col-md-4 col-sm-4 border-right" id="total_viajes">
+                <h3 class="text-center text-primary">
+                    Total de viajes (Mes)
+                </h3>
+            </div>
+
+            <div class="container col-md-4 col-sm-4" id="">
+                <h3 class="text-center text-primary">
+                    "Por Definir"
+                </h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENEDOR DEL STATUS DEL SISTEMA Y PENDIENTES -->
+    <div class="container">
+
+        <!-- CONTENEDOR DE LOS LOS 2 ELEMENTOS -->
+        <div class="row">
+
+            <!-- CONTENEDOR DEL STATUS DEL SISTEMA -->
+            <div class="card container pt-2 col-md-7 col-sm-12">
+
+                <h3>
+                    Status del sistema.
+                </h3>
+
+                <em class="align-top">
+                    Estadisticas del sistema.
+                </em>
+
+                <!-- Contenedor de TODOS LOS ITEMS -->
+                <div class="p-0 mt-2 container-fluid">
+
+                    <!-- Contenedor primeros ITEMS SUPERIORES-->
+                    <div class="p-0 container-fluid row">
+
+                        <!-- Contenedor DEL ITEM USUARIOS -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                            <div class="">
+                                <img src="img/Icons/usuarios.png" alt="Usuarios">
+                            </div>
+
+                            <div class="d-flex flex-column ml-1">
+
+                                <p id="no_usuarios" class="mb-0 text-item-number">
+                                    
+                                </p>
+
+                                <p class="text-item mb-sm-0">
+                                    Usuarios registrados
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ITEM VEHICULOS -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                            <div class="">
+                                <img src="img/Icons/vehiculos.png" alt="Vehiculos">
+                            </div>
+
+                            <div class="d-flex flex-column ml-1">
+
+                                <p id="no_vehiculos" class="mb-0 text-item-number">                                    
+                                </p>
+
+                                <p class="text-item mb-sm-0">
+                                    Vehículos registrados
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ITEM VIAJES -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                                <div class="">
+                                    <img src="img/Icons/viajes.png" alt="Viajes">
+                                </div>
+    
+                                <div class="d-flex flex-column ml-1">
+    
+                                    <p id="no_viajes" class="mb-0 text-item-number">
+                                        
+                                    </p>
+    
+                                    <p class="text-item mb-sm-0">
+                                        Viajes registrados
+                                    </p>
+                                </div>
+    
+                        </div>                        
+
+                    </div>
+
+                    <!-- CONTENEDOR DE LOS ITEMS INFERIORES -->
+                    <div class="p-0 container-fluid mt-md-4 mb-3 row">
+
+                        <!-- CONTENEDOR DEL ITEM GASTO VERIFICACIONES -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                            <div class="">
+                                <img src="img/Icons/verificaciones.png" alt="Verificaciones">
+                            </div>
+
+                            <div class="d-flex flex-column ml-1">
+
+                                <p id="gasto_verificacion" class="mb-0 text-item-number">                                    
+                                </p>
+
+                                <p class="text-item mb-sm-0">
+                                    Gasto total en verificaciones.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ITEM GASTO MANTENIMIENTOS -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                            <div class="">
+                                <img src="img/Icons/mantenimientos.png" alt="Mantenimietos">
+                            </div>
+
+                            <div class="d-flex flex-column ml-1">
+
+                                <p id="gasto_mantenimientos" class="mb-0 text-item-number">                                    
+                                </p>
+
+                                <p class="text-item mb-sm-0">
+                                    Gasto total en mantenimientos 
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENEDOR DEL ITEM GASTO SEGUROS -->
+                        <div class="p-0 d-flex flex-row col-md-4 mt-sm-2">
+
+                                <div class="">
+                                    <img src="img/Icons/seguros.png" alt="Seguro">
+                                </div>
+    
+                                <div class="d-flex flex-column ml-1">
+    
+                                    <p id="gasto_seguros" class="mb-0 text-item-number">                                        
+                                    </p>
+    
+                                    <p class="text-item mb-sm-0">
+                                        Gasto Total en seguros
+                                    </p>
+                                </div>
+    
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CONTENEDOR DE LOS PENDIENTES DEL SISTEMA -->
+            <div class="card container pt-2 col-md-4 col-sm-12" style="overflow-y: scroll; ">                            
+                                 
+                <div class="d-flex row align-items-center">
+                
+                    <h4 class="align-self-center">
+                        Incidentes y Pendientes
+                    </h4>
+
+                    <div class="ml-1">
+                        <img class="" src="img/Icons/alerta.png" alt="Alerta">
+                    </div>                
+
+                </div>
+                <hr class="mt-2">
+
+            </div>            
+
+        </div>                
+
+    </div>
+
+    <!-- Contenedor de estadisticas de verificaciones -->
+    <div class="container">
+
+        <div class="row ">
+
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Verificacion.png" class="card-img-top" alt="Verificaciones">
+                        <a href="verificaciones.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">VERIFICACIONES DE LOS VEHÍCULOS</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Agregue las verificaciones de los vehículos.
+                        </p>
+                        <ul>
+                            <li>Administre las verificaciones de los vehículos</li>
+                            <li>Mantengase al día con las verificaciones</li>
+                        </ul>
+                        <a href="verificaciones.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+            <div class="col-lg-8 col-md-6 col-sm-6 p-5">
+
+                <h3 class="text-center text-danger">
+                    Vehículos próximos a verificaciones
+                </h3>
+
+                <ul id="verificaciones-lista" class="list-group mt-3">                    
+                                        
+                </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Contenedor de OPCIONES PARA EL USUARIO -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Card de VEHICULOS -->
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+
+                <!-- Card de Vehiculos -->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Vehiculos.png" class="card-img-top" alt="Vehiculos">
+                        <a href="vehiculos.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">VEHÍCULOS</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Administre las vehículos de la empresa
+                        </p>
+                        <ul>
+                            <li>Agregue nuevos vehículos.</li>
+                            <li>Edite la información de los vehíclos.</li>
+                        </ul>
+                        <a href="vehiculos.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+            <!-- Card de USUARIOS -->
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Usuarios.jpg" class="card-img-top" alt="Usuarios">
+                        <a href="usuarios.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">USUARIOS</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Administre los usuarios del sistema.
+                        </p>
+                        <ul>
+                            <li>Elimine, Agregue, Edite usuarios del sistema.</li>
+                            <li>Asigne roles a los usuarios.</li>
+                        </ul>
+                        <a href="usuarios.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+            <!-- Card de VIAJES -->
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Viajes.jpg" class="card-img-top" alt="Viajes">
+                        <a href="viajes.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">VIAJES</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Visualize detalles de los viajes en transcurso.
+                        </p>
+                        <ul>
+                            <li>Agregue y edite nuevos viajes</li>
+                            <li>Gestione los viajes en transcurso</li>
+                            <li>Realize revisiones de salida y llegada de los vehículos</li>
+                            <li>Agregue presupuestos para los viajes</li>
+                        </ul>
+                        <a href="viajes.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de estadisticas de POLIZA DE SEGUROS -->
+    <div class="container">
+
+        <div class="row ">
+
+            <div class="col-lg-8 col-md-6 col-sm-6 p-5">
+
+                <h3 class="text-center text-danger">
+                    Vehículos con vencimiento próximos de seguro
+                </h3>
+
+                <ul id="lista_seguros" class="list-group mt-3">
+                    
+                </ul>
+
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Seguros.png" class="card-img-top" alt="Seguros">
+                        <a href="seguros.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">SEGURO DE LOS VEHICULOS</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Agregue las facturas del seguro de los vehículos.
+                        </p>
+                        <ul>
+                            <li>Agregue nuevas facturas de sus seguros</li>
+                            <li>Mantengase al día con las estaditicas de los seguros</li>
+                        </ul>
+                        <a href="seguros.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de estadisticas de Mantenimietos -->
+    <div class="container">
+
+        <div class="row ">
+
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img src="img/Mantenimiento.jpg" class="card-img-top" alt="Mantenimietos">
+                        <a href="mantenimientos.html">
+                            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title text-center text-primary">MANTENIMIENTO DE LOS VEHICULOS</h4>
+                        <!--Text-->
+                        <p class="card-text">
+                            Administre los mantenimientos de los vehículos.
+                        </p>
+                        <ul>
+                            <li>Agregue nuevas facturas de los mantenimientos.</li>
+                            <li>Mantenga un control de los mantenimientos realizados.</li>
+                            <li>Obtenga una mayor optimización del rendimiento vehicular.</li>
+                        </ul>
+                        <a href="mantenimientos.html" class="success-text d-flex flex-row-reverse p-2">
+                            <h5 class="waves-effect waves-light">Ver más
+                                <i class="fa fa-angle-double-right ml-2"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+
+            <div class="col-lg-8 col-md-6 col-sm-6 p-5">
+
+                <h3 class="text-center text-danger">
+                    Vehículos próximos a mantenimiento.
+                </h3>
+
+                <ul class="list-group mt-3" id="mantenimientos_proximos">
+                    <a href="seguros.html">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ford Transit | 43B5
+                            <span class="badge badge-danger badge-pill">12 días</span>
+                        </li>
+                    </a>
+                    <a href="seguros.html">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ford Transit | 43B5
+                            <span class="badge badge-danger badge-pill">35 días</span>
+                        </li>
+                    </a>
+                    <a href="seguros.html">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ford Transit | 43B5
+                            <span class="badge badge-danger badge-pill">15 días</span>
+                        </li>
+                    </a>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Inicio del Footer 
+    ==========================================-->
+    <footer class="colorPrimary container-fluid">
+
+        <div class="container footer-content">
+            <img class="img-footer" src="img/Logo.png" alt="Logotipo">
+            <p class="footer-text">
+                2018 Sistema de Administración Logística Terrestre (SALT)
+                <br> Todos los derechos reservados &copy;
+            </p>
+
+            <div class="container links">
+                <p class="footer-text">&copy; 2018 Miguel & Sergio develops Inc. </p>
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/personal.png" alt="BLOG"> Contacto Personal/Blog</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/github.png" alt="GITHUB"> Github</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img src="img/Icons/fb.png" alt="">Facebook</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Scripts de funciones -->
+    <script type="text/javascript" src="js/principal.js"></script>
+    <script type="text/javascript" src="js/estadisticas_rapidas.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="icon" href="img/Icons/Logo SALT.png">
+    <title>Verificaciones</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Estilos del sitio web -->
+    <link rel="stylesheet" href="css/form-styles.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+
+</head>
+
+<body>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="js/verificar_sesion.js"></script>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <a class="navbar-brand d-none d-md-block" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> Sistema de Admininstración Logistíca Terrestre
+            </a>
+
+            <a class="navbar-brand d-sm-none" href="principal.html">
+                <img src="img/Icons/Logo SALT.png" class="img-nav" width="30" height="30" alt="Logotipo"> SALT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-lg-row flex-sm-column ml-md-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="principal.html">Inicio
+                            <span class="sr-only">(Inicio)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mr-md-2" href="#">Reportes
+                            <span class="sr-only">(Reportes)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Menú
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="usuarios.html">
+                                <i class='fa fa-user'></i>Usuarios
+                            </a>
+
+                            <a class="dropdown-item" href="vehiculo.html">
+                                <i class='fa fa-truck'></i>Vehiculos
+                            </a>
+
+                            <a class="dropdown-item" href="viajes.html">
+                                <i class='fa fa-truck'></i>Viajes
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-md-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Usuario
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="perfil.html">
+                                <i class='fa fa-user'></i>Perfil
+                            </a>
+                            <a class="dropdown-item" id="salir">
+                                <i class='fa fa-sign-out'></i>Salir
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="ocultar fixed-top alert_mensaje_exito alert alert-success" role="alert">
+            <center>
+                <strong>¡Correcto!</strong> Se ha guardado la verificación.
+            </center>
+        </div>
+        
+        <div class="ocultar fixed-top alert_mensaje_error alert alert-danger" role="alert">
+            <center>
+                <strong>¡Ha ocurrido un error!</strong> Revise que los campos se hayan llenado correctamente.
+            </center>
+        </div>
+
+    </header>
+
+    <!-- Contenedor del titulo de la UI -->
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="container  col-sm-12">
+                <h1 class="title-view text-center">
+                    Verificaciones de los vehículos
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor con las estadisiticas del viaje -->
+    <div id="view_container" class="card container col-sm-9 form-container">
+
+        <!-- Contenedor del cuerpo de la tarjeta  -->
+        <div class="card-body">
+
+            <!-- Contenedor del Select para vehículos -->
+            <div class="form-row d-flex justify-content-center">
+                <div class="col-md-6 p-3">
+                    <label for="vehiculo">Seleccione un Vehículo</label>
+                    <select name="vehiculo" id="vehiculo" class="form-control">
+                        <option selected>Vehículos</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contenedor de las estadisticas rápidas -->
+            <div class="container mt-4">
+
+                <div class="row">
+
+                    <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                        <h3 class="text-center">
+                            Verificaciones totales.
+                        </h3>
+                        <p id="presupuesto_aprox">                            
+                        </p>
+                    </div>
+
+                    <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                        <h3 class="text-center">
+                            Próxima fecha de verificación.
+                        </h3>
+                        <p id="proxima_fecha">
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                        <h3 class="text-center">
+                            Siguiente verificacion en:
+                        </h3>
+                        <p id="dias" class="text-center">
+                        </p>
+                    </div>
+
+                    <div class="container mt-2 p-2 col-md-5 detalles-container rounded">
+                        <h3 class="text-center">
+                            Total de gasto en verificaciones.
+                        </h3>
+                        <p id="gasto">
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="container mt-2 p-2 col-md-11 ">
+
+                        <p class="text-left">
+                            Estadistícas rápidas para vehiculo.
+                        </p>
+
+                        <button type="button" class="btn btn-md btn-success" id="agregar_nueva">Agregar nueva verificación</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de formulario PARA AGREGAR NUEVAS VERIFICACIONES -->
+    <div id="nueva_verificacion" class="card container col-sm-9">
+
+        <div class="card-body">
+
+            <!-- Contenedor del formulario -->
+            <form>
+
+                <h3 class="text-center mt-5 title-section">Agregar nueva verificación</h3>
+
+                <div class="form-row">
+
+                    <div class="col-md-6 col-sm-12 mt-3">
+                        <label for="fecha">Fecha de realización</label>
+                        <input type="date" class="form-control" id="fecha">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 mt-3">
+                        <label for="proveedor">Proveedor</label>
+                        <input type="text" class="form-control" id="proveedor">
+                    </div>
+
+                </div>
+
+                <div class="form-row d-flex">
+
+                    <div class="col-md-4 col-sm-12 mt-3">
+                        <label for="usuario">Encargado de la verificación</label>
+                        <select name="usuario" id="usuario" class="form-control">
+                            <option selected>Encargado</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 mt-3 align-self-end">
+                        <label for="importe">Importe</label>
+                        <input type="number" class="form-control" id="importe">
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 mt-3">
+                        <label for="proxima">Próxima fecha de verificación</label>
+                        <input type="date" class="form-control" id="proxima">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-md-6 col-sm-12 mt-3">
+                        <label for="kilometraje">Kilometraje</label>
+                        <input type="number" class="form-control" id="kilometraje">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 mt-3">
+
+                        <label for="factura">Foto de la factura</label>
+                        <input type="file" id="factura" name="factura" class="form-control">
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-md-12 col-sm-12 mt-3">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-row mt-4">
+                    <input type="button" id="aceptar" class="btn btn-lg btn-primary" data-toggle='modal' data-target='#add-verificacion' value="Aceptar">
+                    <input type="button" id="cancelar" class="btn btn-lg btn-danger" value="Cancelar">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Contenedor de la tabla -->
+    <div class="table-responsive container-fluid table-container col-sm-11">
+        <table id="dt_verificaciones" class="table display table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Fecha de Verificación</th>
+                    <th>Proveedor</th>
+                    <th>Importe</th>
+                    <th>Encargado</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- Modal para AGREGAR REVISIÓN -->
+    <div class="modal fade" id="add-verificacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div class="col-md-12">
+                        <center>
+                            <h5 class="modal-title" id="exampleModalLabel">¿Agregar verificación?</h5>
+                        </center>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="text-center">
+                        <strong>¡OJO!</strong> Una vez insertado
+                        <strong>NO</strong> se podrá editar la información.
+                        <br>
+                        <br> ¿Desea continuar?</h6>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="aceptar-insertar" class="btn btn-primary">Agregar</button>
+                    <button type="button" id="cancelar-adicion" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Inicio del Footer 
+    ==========================================-->
+    <footer class="colorPrimary container-fluid">
+
+        <div class="container footer-content">
+            <img class="img-footer" src="img/Logo.png" alt="Logotipo">
+            <p class="footer-text">
+                2018 Sistema de Administración Logística Terrestre (SALT)
+                <br> Todos los derechos reservados &copy;
+            </p>
+
+            <div class="container links">
+                <p class="footer-text">&copy; 2018 Miguel & Sergio develops Inc. </p>
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/personal.png" alt="BLOG"> Contacto Personal/Blog</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img class="" src="img/Icons/github.png" alt="GITHUB"> Github</a> &middot;
+
+                <a class="footer-links" href="#">
+                    <img src="img/Icons/fb.png" alt="">Facebook</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        
+    <!-- Data tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Script a las funciones -->
+    <script type="text/javascript" src="js/verificaciones.js"></script>
+
+</body>
+
+</html>
